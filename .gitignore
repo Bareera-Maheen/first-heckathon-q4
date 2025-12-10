@@ -1,0 +1,30 @@
+# Git Ignore for Python/Docusaurus Project
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+*.egg-info/
+
+# Node.js / Docusaurus
+node_modules/
+dist/
+build/
+*.log
+.env*
+.docusaurus/
+.cache/
+/.yarn/
+/npm-debug.log*
+/.pnp/
+.pnp.js
+
+# Universal
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/
