@@ -87,7 +87,7 @@ const config: Config = {
           items: [
             {
               label: 'ROS 2 Basics',
-              to: '/docs/intro',
+              to: '/introduction/overview',
             },
           ],
         },
