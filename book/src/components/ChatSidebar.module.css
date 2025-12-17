@@ -1,0 +1,244 @@
+/* --- Main Container --- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 300px;
+  background-color: #ffffff;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  border-left: 1px solid #e0e0e0;
+}
+
+.sidebarOpen {
+  transform: translateX(0);
+}
+
+/* --- Toggle Button --- */
+.toggleButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 999;
+}
+
+.toggleButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.toggleButton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.toggleButtonHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* --- Header --- */
+.header {
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee;
+  background-color: #f8f9fa;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerTitle {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+}
+
+.statusIndicator {
+  width: 10px;
+  height: 10px;
+  background-color: #28a745; /* Green for online */
+  border-radius: 50%;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: #888;
+}
+
+.closeButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.closeButton:hover {
+  color: #333;
+}
+
+/* --- Message Area --- */
+.messageArea {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #fdfdfd;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.bot {
+  justify-content: flex-start;
+}
+
+.bubble {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.message.user .bubble {
+  background-color: #007bff;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message.bot .bubble {
+  background-color: #e9ecef;
+  color: #333;
+  border-bottom-left-radius: 4px;
+}
+
+.timestamp {
+  font-size: 0.7rem;
+  margin-top: 5px;
+  text-align: right;
+  opacity: 0.7;
+}
+
+/* --- Typing Indicator --- */
+.typingIndicator {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.typingIndicator span {
+  height: 8px;
+  width: 8px;
+  margin: 0 2px;
+  background-color: #ced4da;
+  border-radius: 50%;
+  display: inline-block;
+  animation: typing 1.4s infinite ease-in-out both;
+}
+
+.typingIndicator span:nth-of-type(1) { animation-delay: 0s; }
+.typingIndicator span:nth-of-type(2) { animation-delay: 0.2s; }
+.typingIndicator span:nth-of-type(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0%, 80%, 100% { transform: scale(0); }
+  40% { transform: scale(1.0); }
+}
+
+/* --- Input Area --- */
+.inputArea {
+  padding: 15px;
+  border-top: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f8f9fa;
+}
+
+.textInput {
+  flex-grow: 1;
+  border: 1px solid #ced4da;
+  border-radius: 20px;
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.textInput:focus {
+  border-color: #007bff;
+}
+
+.sendButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+  padding: 5px;
+}
+
+.sendButton:hover {
+  color: #0056b3;
+}
+
+.sendButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 480px) {
+  .sidebar {
+    width: 100%;
+    border-left: none;
+  }
+}
+
+/* --- Ask About Button --- */
+.askButton {
+  position: absolute;
+  z-index: 1001; /* Ensure it's above other content but below modals if any */
+  padding: 6px 12px;
+  background-color: #282a36; /* A dark theme color */
+  color: #f8f8f2; /* Light text */
+  border: 1px solid #44475a;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.askButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
