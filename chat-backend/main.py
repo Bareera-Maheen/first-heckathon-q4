@@ -15,6 +15,8 @@ app = FastAPI()
 # --- CORS Middleware ---
 origins = [
     "http://localhost:3000", # Docusaurus dev server
+    "https://first-heckathon-q4-jn4u.vercel.app",
+    "https://first-heckathon-q4-jn4u.vercel.app/",
 ]
 
 app.add_middleware(
