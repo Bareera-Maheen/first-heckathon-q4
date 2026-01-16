@@ -4,20 +4,25 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from .vector_store import upsert_vectors, create_collection
 from .database import SessionLocal
 from .models import ChatHistory
-import google.generativeai as genai
 from dotenv import load_dotenv
+from google import genai
+from google.genai import types
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def ingest_docs():
     """
     Ingests the documentation into the vector store.
     """
+    # Get the directory of the current file
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    docs_path = os.path.join(current_dir, "..", "book", "docs")
+
     # Load the documents
     loader = DirectoryLoader(
-        "book/docs", glob="**/*.md", loader_cls=TextLoader
+        docs_path, glob="**/*.md", loader_cls=TextLoader
     )
     documents = loader.load()
 
@@ -25,8 +30,23 @@ def ingest_docs():
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
     docs = text_splitter.split_documents(documents)
 
-    # Generate embeddings
-    embeddings = [genai.embed_content(model="gemini-embedding-001", content=doc.page_content, output_dimensionality=768)["embedding"] for doc in docs]
+    # Generate embeddings in batches
+    # Extract all page contents first
+    all_contents = [doc.page_content for doc in docs]
+    
+    # Batch processing for embeddings (up to 100 per call)
+    batch_size = 100
+    all_embeddings = []
+    for i in range(0, len(all_contents), batch_size):
+        batch_contents = all_contents[i:i + batch_size]
+        batch_results = client.models.embed_content(
+            model="text-embedding-004",
+            contents=batch_contents,
+            config=types.EmbedContentConfig(task_type="RETRIEVAL_DOCUMENT")
+        )
+        all_embeddings.extend([res.values for res in batch_results.embeddings])
+    
+    embeddings = all_embeddings
     
     # Create and upsert vectors
     collection_name = "docusaurus_docs"

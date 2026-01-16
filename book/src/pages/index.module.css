@@ -8,11 +8,16 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-radius: 0 0 2rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--ifm-global-shadow-lg);
 }
 
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
+    border-radius: 0 0 1rem 1rem;
   }
 }
 
@@ -20,25 +25,75 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .authorCredits {
   margin-top: 2rem;
   text-align: center;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: var(--ifm-global-radius);
+  backdrop-filter: blur(10px);
 }
 
 .tableOfContentsPreview {
   margin-top: 2rem;
   text-align: left;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 1.5rem;
+  border-radius: var(--ifm-global-radius);
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--ifm-global-shadow-md);
 }
 
 .bookPreview {
   margin-top: 2rem;
   text-align: left;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 1.5rem;
+  border-radius: var(--ifm-global-radius);
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+/* Enhanced typography */
+.heroBanner h1 {
+  background: linear-gradient(135deg, var(--ifm-color-primary), #1e40af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-size: 3.5rem;
+  line-height: 1.1;
+}
+
+.heroBanner h2 {
+  color: var(--ifm-color-primary-darker);
+  font-weight: 600;
+}
+
+.heroBanner p {
+  font-size: 1.25rem;
+  color: #374151;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heroBanner h1 {
+    font-size: 2.5rem;
+  }
+
+  .heroBanner p {
+    font-size: 1.1rem;
+  }
+
+  .authorCredits,
+  .tableOfContentsPreview,
+  .bookPreview {
+    padding: 1rem;
+  }
 }

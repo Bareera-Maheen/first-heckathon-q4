@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 import os
 from .models import Base
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 

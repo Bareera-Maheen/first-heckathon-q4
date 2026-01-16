@@ -1,0 +1,24 @@
+feat: Implement RAG Chatbot system for Docusaurus
+
+This commit introduces a complete Retrieval-Augmented Generation (RAG) chatbot system
+integrated with the Docusaurus documentation website.
+
+Key features include:
+- **FastAPI Backend:**
+  - `main.py`: Core FastAPI application with `/chat` endpoint for RAG queries.
+  - `ingestion.py`: Script for ingesting Docusaurus Markdown files into Qdrant.
+  - `vector_store.py`: Manages connection and operations with Qdrant vector database.
+  - `database.py`: Handles connection to Neon Serverless PostgreSQL for chat history.
+  - `models.py`: Defines Pydantic and SQLAlchemy models for chat requests and history.
+  - CORS middleware configured for frontend communication.
+- **Frontend Chat Sidebar (`book/src/components/ChatSidebar.jsx`):**
+  - React-based chat widget with collapsible sidebar design.
+  - Integrates with Docusaurus layout.
+  - Implements "Ask about this" feature for text selection.
+  - Communicates with FastAPI backend for real-time responses.
+  - Manages chat history and user input.
+- **Dependencies:**
+  - Python: FastAPI, uvicorn, SQLAlchemy, psycopg2-binary, qdrant-client, google-generativeai, python-dotenv, pydantic, langchain, langchain-community, langchain-text-splitters.
+  - JavaScript: React, react-dom, @mui/material, @emotion/react, @emotion/styled, @mui/icons-material.
+
+This lays the foundation for an interactive documentation experience.

@@ -4,32 +4,55 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Modern color palette */
 :root {
-  --ifm-color-primary: #3f51b5; /* Deeper blue */
-  --ifm-color-primary-dark: #303f9f;
-  --ifm-color-primary-darker: #283593;
-  --ifm-color-primary-darkest: #1a237e;
-  --ifm-color-primary-light: #5c6bc0;
-  --ifm-color-primary-lighter: #7986cb;
-  --ifm-color-primary-lightest: #9fa8da;
+  --ifm-color-primary: #2563eb; /* Modern blue */
+  --ifm-color-primary-dark: #1d4ed8;
+  --ifm-color-primary-darker: #1e40af;
+  --ifm-color-primary-darkest: #1e3a8a;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+  --ifm-color-secondary: #64748b; /* Gray for secondary elements */
+  --ifm-color-success: #10b981; /* Green for success */
+  --ifm-color-info: #0ea5e9; /* Blue for info */
+  --ifm-color-warning: #f59e0b; /* Amber for warnings */
+  --ifm-color-danger: #ef4444; /* Red for errors */
+
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 
   /* Textbook specific styles */
-  --ifm-font-family-base: 'Merriweather', serif; /* Serif font for body */
-  --ifm-font-family-monospace: 'Fira Code', monospace;
-  --ifm-line-height-base: 1.6;
+  --ifm-font-family-base: 'Inter', 'Segoe UI', system-ui, sans-serif; /* Modern sans-serif font */
+  --ifm-font-family-monospace: 'Fira Code', 'Consolas', 'Monaco', monospace;
+  --ifm-line-height-base: 1.7;
+
+  /* Enhanced spacing and shadows */
+  --ifm-spacing-horizontal: 1.5rem;
+  --ifm-spacing-vertical: 1.5rem;
+  --ifm-global-shadow-lw: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --ifm-global-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --ifm-global-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Border radius */
+  --ifm-global-radius: 0.5rem;
+  --ifm-button-border-radius: 0.375rem;
 }
 
 html[data-theme='dark'] {
-  --ifm-color-primary: #7986cb; /* Lighter blue for dark mode */
-  --ifm-color-primary-dark: #5c6bc0;
-  --ifm-color-primary-darker: #4f5b93;
-  --ifm-color-primary-darkest: #3f4771;
-  --ifm-color-primary-light: #9fa8da;
-  --ifm-color-primary-lighter: #c5cae9;
-  --ifm-color-primary-lightest: #e8eaf6;
+  --ifm-color-primary: #3b82f6; /* Lighter blue for dark mode */
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
+  --ifm-color-secondary: #94a3b8; /* Lighter gray for dark mode */
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  --ifm-navbar-background-color: #0f172a;
+  --ifm-footer-background-color: #0f172a;
+  --ifm-card-background-color: #1e293b;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 

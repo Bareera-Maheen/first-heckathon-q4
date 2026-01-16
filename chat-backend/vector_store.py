@@ -3,7 +3,7 @@ from qdrant_client.http.models import PointStruct
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 QDRANT_URL = os.getenv("QDRANT_URL")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
@@ -31,8 +31,9 @@ def upsert_vectors(collection_name, vectors, payloads):
     )
 
 def search_vectors(client: QdrantClient, collection_name, query_vector, limit=5):
-    return client.search(
+    response = client.query_points(
         collection_name=collection_name,
-        query_vector=query_vector,
+        query=query_vector,
         limit=limit
     )
+    return response.points
